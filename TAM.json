@@ -1,0 +1,41 @@
+[{
+        "departure_airport": "GRU",
+        "destination_airport": "LIS",
+        "date": "2020-12-02T10:00:00-01:00",
+        "price": 400,
+        "currency": "USD",
+        "fare": false
+    },
+    {
+        "departure_airport": "LIS",
+        "destination_airport": "GRU",
+        "date": "2021-01-07T13:30:00-01:00",
+        "price": 352,
+        "currency": "USD",
+        "fare": true
+    },
+    {
+        "departure_airport": "CWB",
+        "destination_airport": "GRU",
+        "date": "2020-12-02T10:00:00-05:00",
+        "price": 150,
+        "currency": "USD",
+        "fare": false
+    },
+    {
+        "departure_airport": "GRU",
+        "destination_airport": "CWB",
+        "date": "2020-12-16T14:00:00Z",
+        "price": 160,
+        "currency": "USD",
+        "fare": true
+    },
+    {
+        "departure_airport": "GRU",
+        "destination_airport": "LIS",
+        "date": "2020-12-03T10:00:00-05:00",
+        "price": 400,
+        "currency": "USD",
+        "fare": false
+    }
+]
