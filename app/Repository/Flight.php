@@ -23,8 +23,11 @@ class Flight
         return $unionSources;
     }
 
-    public function findAll()
+    public function findAll($from, $to, $departureDate, $returnDate, $maxPrice)
     {
+        $sources = $this->loadData();
+
+
 
     }
 }
