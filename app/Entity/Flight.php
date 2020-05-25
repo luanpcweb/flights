@@ -14,23 +14,23 @@ class Flight
         \DateTime $date, string $price, string $currency)
     {
         $this->departureAirport = $departureAirport;
-        $this->destinationAriport = $destinationAriport;
+        $this->destinationAirport = $destinationAirport;
         $this->date = $date;
         $this->price = $price;
         $this->currency = $currency;
     }
 
-    public getDepartureAirport() :string
+    public function getDepartureAirport() :string
     {
         return $this->departureAirport;
     }
 
-    public getDestinationAirpot() :string
+    public function getDestinationAirpot() :string
     {
         return $this->destinationAirport;
     }
 
-    public function getDate() :DateTime
+    public function getDate() :\DateTime
     {
         return $this->date;
     }
