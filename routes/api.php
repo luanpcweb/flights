@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('search', 'FlightsController@search');
+Route::get('/search', 'FlightsController@search');
