@@ -8,7 +8,7 @@ use App\Entity\Tickets;
 use App\CompanyRepository;
 
 use App\Exceptions\DepartureAirportCodeEmpty;
-use App\Exceptions\DepartureDateEmpty;
+use App\Exceptions\DepartureWrongValue;
 
 class FlightSearcher
 {
@@ -34,8 +34,12 @@ class FlightSearcher
             throw new DepartureAirportCodeEmpty($departureAirportCode);
         }
 
-        if (!$departureDate) {
-            throw new DepartureDateEmpty($departureDate);
+        if (strlen($departureAirportCode) < 3) {
+            throw new DepartureWrongValue($departureDate);
+        }
+
+        if(!preg_match('/^[A-Za-z]+$/i', $departureAirportCode)) {
+            throw new DepartureWrongValue($departureDate);
         }
 
         $departureTickets = $this->searchOnCompanies(
