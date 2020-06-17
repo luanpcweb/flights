@@ -10,7 +10,7 @@ use App\CompanyRepository;
 use App\Entity\SearchResult;
 
 use App\Exceptions\DepartureAirportCodeEmpty;
-use App\Exceptions\DepartureDateEmpty;
+use App\Exceptions\DepartureWrongValue;
 
 class FlightSearcherTest extends TestCase
 {
@@ -180,8 +180,9 @@ class FlightSearcherTest extends TestCase
 
     /**
      * @test
+     * @dataProvider departureValidantionProvider
      */
-    public function shouldNotSearchDepartureDateEmpty()
+    public function shouldNotSearchDepartureWrongValue($departure)
     {
         $departureTickets = new Tickets;
         $departureTickets->addTicket(
@@ -193,15 +194,26 @@ class FlightSearcherTest extends TestCase
             $this->onConsecutiveCalls($departureTickets, new Tickets())
         );
 
-        $this->expectException(DepartureDateEmpty::class);
+        $this->expectException(DepartureWrongValue::class);
 
         $searcher = new FlightSearcher();
         $searcher->search(
-            'LIS',
+            $departure,
             'GRU',
-            null,
+            new \DateTime('now'),
             100,
             new \DateTime('tomorrow')
         );
+    }
+
+    public function departureValidantionProvider()
+    {
+        return [
+            ['LI'],
+            ['L1S'],
+            ['@+='],
+            ['@Rg'],
+            ['GR&']
+        ];
     }
 }
