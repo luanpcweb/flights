@@ -41,8 +41,6 @@ class FlightSearcherTest extends TestCase
 
         $this->assertEquals(1, $result->countDeparturesTickets());
         $this->assertEquals(0, $result->countReturnTickets());
-
-
     }
 
     /**
@@ -119,7 +117,6 @@ class FlightSearcherTest extends TestCase
 
         $this->assertEquals(1, $result->countDeparturesTickets());
         $this->assertEquals(2, $result->countReturnTickets());
-
     }
 
     /**
@@ -152,7 +149,6 @@ class FlightSearcherTest extends TestCase
 
         $this->assertEquals(0, $result->countDeparturesTickets());
         $this->assertEquals(0, $result->countReturnTickets());
-
     }
 
     /**
@@ -160,7 +156,6 @@ class FlightSearcherTest extends TestCase
      */
     public function shouldNotSearchDepartureEmpty()
     {
-
         $departureTickets = new Tickets;
         $departureTickets->addTicket(
             new Ticket('LIS', 'GRU', new \DateTime('+20 hour'), 6)
@@ -181,7 +176,6 @@ class FlightSearcherTest extends TestCase
             100,
             new \DateTime('tomorrow')
         );
-
     }
 
     /**

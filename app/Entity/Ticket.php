@@ -4,7 +4,6 @@ namespace App\Entity;
 
 class Ticket
 {
-
     private $from;
     private $to;
     private $date;
@@ -51,5 +50,4 @@ class Ticket
     {
         return $this->price;
     }
-
 }

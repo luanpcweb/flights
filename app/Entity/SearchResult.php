@@ -11,7 +11,6 @@ class SearchResult implements \JsonSerializable
         Tickets $departureResult,
         Tickets $returnResult
     ) {
-
         $this->departureResult = $departureResult;
         $this->returnResult = $returnResult;
     }
@@ -28,11 +27,11 @@ class SearchResult implements \JsonSerializable
 
     public function contains(Ticket $ticket): bool
     {
-        if($this->departureResult->contains($ticket)) {
+        if ($this->departureResult->contains($ticket)) {
             return true;
         }
 
-        if($this->returnResult->contains($ticket)) {
+        if ($this->returnResult->contains($ticket)) {
             return true;
         }
 
@@ -52,7 +51,7 @@ class SearchResult implements \JsonSerializable
         }
 
         $returnTickets = [];
-        foreach($this->returnResult as $ticket) {
+        foreach ($this->returnResult as $ticket) {
             $returnTickets[] = [
                 'from' => $ticket->getFrom(),
                 'to' => $ticket->getTo(),

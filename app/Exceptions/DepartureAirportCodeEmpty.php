@@ -12,5 +12,4 @@ class DepartureAirportCodeEmpty extends \UnexpectedValueException
     {
         $this->$departureAirportCode = $departureAirportCode;
     }
-
 }

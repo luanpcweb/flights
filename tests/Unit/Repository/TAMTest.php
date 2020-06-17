@@ -31,6 +31,5 @@ class TAMTest extends TestCase
         $tickets = $tam->searchBy($criteria);
 
         $this->assertCount(1, $tickets);
-
     }
 }

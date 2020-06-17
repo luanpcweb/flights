@@ -39,7 +39,4 @@ class SearchCriteria
 
         return $this->date->format('Y-m-d') === $ticket->getDepartureDayString();
     }
-
-
-
 }

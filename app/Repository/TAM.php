@@ -29,7 +29,7 @@ class TAM implements CompanyRepository
                 $ticketRaw['price']
             );
 
-            if(!$criteria->match($ticket)) {
+            if (!$criteria->match($ticket)) {
                 continue;
             }
 

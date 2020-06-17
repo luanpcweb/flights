@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class TAPTest extends TestCase
 {
-
     public $xml = <<<EOT
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
@@ -27,7 +26,6 @@ EOT;
      */
     public function shouldGetFirstTicket()
     {
-
         $criteria = $this->getMockBuilder(SearchCriteria::class)->disableOriginalConstructor()->getMock();
         $criteria->method('match')->willReturn(true);
 
@@ -37,6 +35,5 @@ EOT;
         $this->assertCount(1, $tickets);
         $this->assertEquals('GRU', $tickets->current()->getFrom());
         $this->assertEquals('LIS', $tickets->current()->getTo());
-
     }
 }

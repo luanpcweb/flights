@@ -7,10 +7,8 @@ use App\Entity\SearchCriteria;
 use App\Entity\Ticket;
 use App\Entity\Tickets;
 
-
 class TAP implements CompanyRepository
 {
-
     private $source;
 
     public function __construct($source)
@@ -30,7 +28,7 @@ class TAP implements CompanyRepository
                 (float)$ticketRaw->price
             );
 
-            if(!$criteria->match($ticket)) {
+            if (!$criteria->match($ticket)) {
                 continue;
             }
 

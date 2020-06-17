@@ -8,7 +8,6 @@ class FlightsController extends Controller
 {
     public function search(Request $request)
     {
-
         $tam = new \App\Repository\TAM(file_get_contents(__DIR__ . '/../../../TAM.json'));
         $tap = new \App\Repository\TAP(file_get_contents(__DIR__ . '/../../../TAP.xml'));
 
@@ -23,6 +22,5 @@ class FlightsController extends Controller
         );
 
         return $tickets;
-
     }
 }

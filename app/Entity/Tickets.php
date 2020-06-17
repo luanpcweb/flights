@@ -58,12 +58,11 @@ class Tickets implements \Countable, \Iterator
     public function contains(Ticket $ticket): bool
     {
         foreach ($this->tickets as $internalTicket) {
-            if($internalTicket->toHashString() === $ticket->toHashString()) {
+            if ($internalTicket->toHashString() === $ticket->toHashString()) {
                 return true;
             }
         }
 
         return false;
     }
-
 }

@@ -12,7 +12,6 @@ use App\Exceptions\DepartureDateEmpty;
 
 class FlightSearcher
 {
-
     private $companies;
 
     public function __construct(CompanyRepository ...$companies)
@@ -27,16 +26,15 @@ class FlightSearcher
         float $price = null,
         \Datetime $returnDate = null
     ) {
-
         if ($price === null) {
             $price = PHP_FLOAT_MAX;
         }
 
-        if(!$departureAirportCode) {
+        if (!$departureAirportCode) {
             throw new DepartureAirportCodeEmpty($departureAirportCode);
         }
 
-        if(!$departureDate) {
+        if (!$departureDate) {
             throw new DepartureDateEmpty($departureDate);
         }
 
@@ -45,7 +43,7 @@ class FlightSearcher
         );
 
         $returnTickets = new Tickets();
-        if(count($departureTickets) > 0) {
+        if (count($departureTickets) > 0) {
             $returnTickets = $this->searchOnCompanies(
                 new SearchCriteria($destinationAirportCode, $departureAirportCode, $returnDate, $price)
             );
@@ -55,13 +53,12 @@ class FlightSearcher
             $departureTickets,
             $returnTickets
         );
-
     }
 
     private function searchOnCompanies(SearchCriteria $criteria)
     {
         $tickets = new Tickets;
-        foreach($this->companies as $company) {
+        foreach ($this->companies as $company) {
             $foundTickets = $company->searchBy($criteria);
             $tickets->addTickets($foundTickets);
         }
@@ -69,4 +66,3 @@ class FlightSearcher
         return $tickets;
     }
 }
-

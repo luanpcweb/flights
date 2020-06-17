@@ -9,4 +9,3 @@ interface CompanyRepository
 {
     public function searchBy(SearchCriteria $criteria): Tickets;
 }
-
