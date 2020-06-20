@@ -126,7 +126,7 @@ class FlightSearcherTest extends TestCase
     {
         $returnTickets = new Tickets;
         $returnTickets->addTicket(
-            new Ticket('LIS', 'GRU', new \DateTime('+24 hour'), 7)
+            new Ticket('LIS', 'GRU', new \DateTime('2020-03-31'), 7)
         );
 
         $returnTickets->addTicket(
@@ -142,7 +142,7 @@ class FlightSearcherTest extends TestCase
         $result = $searcher->search(
             'LIS',
             'GRU',
-            new \DateTime('now'),
+            new \DateTime('2020-03-31'),
             100,
             new \DateTime('tomorrow')
         );
@@ -206,10 +206,30 @@ class FlightSearcherTest extends TestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function shouldNotListTicketsIfDepartureIsTheSameOfReturn()
+    {
+        $company = $this->createMock(CompanyRepository::class);
+        $company->expects($this->never())->method('searchBy');
+
+        $searcher = new FlightSearcher($company);
+        $result = $searcher->search(
+            'LIS',
+            'LIS',
+            new \DateTime('now')
+        );
+
+        $this->assertEquals(0, $result->countDeparturesTickets());
+        $this->assertEquals(0, $result->countReturnTickets());
+    }
+
     public function departureValidantionProvider()
     {
         return [
             ['LI'],
+            ['L'],
             ['L1S'],
             ['@+='],
             ['@Rg'],

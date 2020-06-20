@@ -42,12 +42,19 @@ class FlightSearcher
             throw new DepartureWrongValue($departureDate);
         }
 
+        if($departureAirportCode === $destinationAirportCode) {
+            return new SearchResult(
+                new Tickets(),
+                new Tickets()
+            );
+        }
+
         $departureTickets = $this->searchOnCompanies(
             new SearchCriteria($departureAirportCode, $destinationAirportCode, $departureDate, $price)
         );
 
         $returnTickets = new Tickets();
-        if (count($departureTickets) > 0) {
+        if (count($departureTickets) > 0 and $returnDate != null) {
             $returnTickets = $this->searchOnCompanies(
                 new SearchCriteria($destinationAirportCode, $departureAirportCode, $returnDate, $price)
             );
