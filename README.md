@@ -1,3 +1,3 @@
-# Flights
+# Flights [![Build Status](https://travis-ci.org/luanpcweb/flights.svg?branch=master)](https://travis-ci.org/luanpcweb/flights)
 
 In Progress...
