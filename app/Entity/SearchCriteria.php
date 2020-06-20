@@ -24,7 +24,7 @@ class SearchCriteria
     public function match(Ticket $ticket): bool
     {
         if ($ticket->getFrom() != $this->from ||
-            $ticket->getTo() != $this->to
+            ($this->to != null and $ticket->getTo() != $this->to)
         ) {
             return false;
         }
@@ -38,5 +38,6 @@ class SearchCriteria
         }
 
         return $this->date->format('Y-m-d') === $ticket->getDepartureDayString();
+
     }
 }
