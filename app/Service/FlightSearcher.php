@@ -38,11 +38,11 @@ class FlightSearcher
             throw new DepartureWrongValue($departureDate);
         }
 
-        if(!preg_match('/^[A-Za-z]+$/i', $departureAirportCode)) {
+        if (!preg_match('/^[A-Za-z]+$/i', $departureAirportCode)) {
             throw new DepartureWrongValue($departureDate);
         }
 
-        if($departureAirportCode === $destinationAirportCode) {
+        if ($departureAirportCode === $destinationAirportCode) {
             return new SearchResult(
                 new Tickets(),
                 new Tickets()
