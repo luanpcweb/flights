@@ -15,9 +15,9 @@ class FlightsController extends Controller
 
         $tickets = $search->search(
             $request->get('from'),
-            $request->get('to'),
+            $request->get('to') ? $request->get('to') : '',
             new \DateTime($request->get('departure_date')),
-            $request->get('price'),
+            $request->get('price') ? $request->get('price') : null,
             $request->get('return_date') ? new \DateTime($request->get('return_date')) : null
         );
 
