@@ -6,13 +6,16 @@ class SearchResult implements \JsonSerializable
 {
     private $departureResult;
     private $returnResult;
+    private $sugestionTickets;
 
     public function __construct(
         Tickets $departureResult,
-        Tickets $returnResult
+        Tickets $returnResult,
+        Tickets $sugestionTickets = null
     ) {
         $this->departureResult = $departureResult;
         $this->returnResult = $returnResult;
+        $this->sugestionTickets = $sugestionTickets;
     }
 
     public function countDeparturesTickets(): int
@@ -23,6 +26,11 @@ class SearchResult implements \JsonSerializable
     public function countReturnTickets(): int
     {
         return count($this->returnResult);
+    }
+
+    public function countSugestionTickets(): int
+    {
+        return count($this->sugestionTickets);
     }
 
     public function contains(Ticket $ticket): bool
@@ -57,6 +65,24 @@ class SearchResult implements \JsonSerializable
                 'to' => $ticket->getTo(),
                 'price' => $ticket->getPrice(),
                 'date' => $ticket->getDateString()
+            ];
+        }
+
+        if ($this->sugestionTickets) {
+            $sugestionTickets = [];
+            foreach ($this->sugestionTickets as $ticket) {
+                $sugestionTickets[] = [
+                    'from' => $ticket->getFrom(),
+                    'to' => $ticket->getTo(),
+                    'price' => $ticket->getPrice(),
+                    'date' => $ticket->getDateString()
+                ];
+            }
+
+            return [
+                'departure' => $departureTickets,
+                'return' => $returnTickets,
+                'sugestions' => $sugestionTickets
             ];
         }
 

@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class SearchCriteria
+use App\Criteria;
+
+class SearchCriteria implements Criteria
 {
     private $from;
     private $to;

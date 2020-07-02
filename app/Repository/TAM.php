@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\CompanyRepository;
-use App\Entity\SearchCriteria;
+use App\Criteria;
 use App\Entity\Tickets;
 use App\Entity\Ticket;
 
@@ -16,7 +16,7 @@ class TAM implements CompanyRepository
         $this->source = $source;
     }
 
-    public function searchBy(SearchCriteria $criteria): Tickets
+    public function searchBy(Criteria $criteria): Tickets
     {
         $ticketsRaw = \json_decode($this->source, true);
 

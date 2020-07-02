@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\CompanyRepository;
-use App\Entity\SearchCriteria;
+use App\Criteria;
 use App\Entity\Ticket;
 use App\Entity\Tickets;
 
@@ -16,7 +16,7 @@ class TAP implements CompanyRepository
         $this->source = $source;
     }
 
-    public function searchBy(SearchCriteria $criteria): Tickets
+    public function searchBy(Criteria $criteria): Tickets
     {
         $xml = new \SimpleXMLElement($this->source);
         $tickets = new Tickets;
